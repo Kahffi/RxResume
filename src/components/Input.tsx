@@ -1,5 +1,7 @@
+import { v7 } from "uuid";
+
 type InputProps = {
-  placeholder?: string;
+  label: string;
   type: string;
   //   inputData: InputDataGeneral;
   defaultValue: string;
@@ -9,17 +11,20 @@ type InputProps = {
 // type InputDataGeneral = "name" | "phone";
 
 export default function Input({
-  placeholder,
+  label,
   type,
   defaultValue,
   onChange,
 }: InputProps) {
+  const inputID = v7();
+
   return (
-    <div>
+    <div className="text-lg flex flex-col gap-1">
+      <label htmlFor={inputID}>{label}</label>
       <input
+        id={inputID}
         type={type}
-        placeholder={placeholder}
-        className="px-2 py-1 w-full outline-none bg-transparent border-b-2 text-slate-200"
+        className="px-2 py-1 w-full outline-none bg-transparent border border-slate-400 text-slate-200 rounded-sm"
         onChange={onChange}
         defaultValue={defaultValue}
       />
