@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from "react";
-import { ContactInfo, UserInfo } from "../hooks/useUserData";
+import { ContactInfo, UserInfo } from "../../hooks/useUserData";
 import Input from "./Input";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { PLATFORMS } from "../constant";
+import { PLATFORMS } from "../../constant";
 import Dropdown from "./DropDown";
 type Props = {
   contact: ContactInfo;
@@ -24,10 +24,10 @@ function PlatformItem({
     <div
       key={name}
       onClick={onClick}
-      className="flex items-center gap-7 font-medium cursor-pointer"
+      className="flex items-center gap-3 font-medium cursor-pointer"
     >
-      <Icon icon={icon} className="text-4xl" />
-      <span>{name}</span>
+      <Icon icon={icon} className="text-3xl" />
+      <span className="text-md text-gray-100">{name}</span>
     </div>
   );
 }
@@ -50,6 +50,7 @@ export default function ContactLink({ contact, setUserData, linkID }: Props) {
     });
   }
 
+  // function to update the closed dropdown display
   function updatePlatform(platformName: string) {
     setUserData((prevUserData) => {
       const updatedContacts = prevUserData.contacts.map((ctc) =>

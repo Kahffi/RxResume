@@ -1,4 +1,4 @@
-import { UserInfo } from "../hooks/useUserData";
+import { UserInfo } from "../../hooks/useUserData";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Input from "./Input";
 import ContactLink from "./ContactLink";
@@ -54,10 +54,8 @@ export default function GeneralForm({ userData, setUserData }: Props) {
   }
 
   return (
-    <div className="">
-      <h3 className="font-semibold text-2xl">General Info</h3>
-
-      <div className="flex flex-col gap-5">
+    <div className="w-full">
+      <div className="flex flex-col gap-5 w-full">
         <Input
           type="text"
           label="Name"
@@ -75,8 +73,8 @@ export default function GeneralForm({ userData, setUserData }: Props) {
 
         {/* Contact Links */}
         <div className="flex flex-col gap-1">
-          <h4 className="text-lg font-medium">Contact Links</h4>
-          <ul className="flex flex-col gap-8 px-2">
+          <h4 className="text-lg">Contact Links</h4>
+          <ul className="flex flex-col gap-7 px-2 ">
             {userData.contacts.map((ctc, idx) => {
               return (
                 <li key={ctc.id}>
@@ -106,11 +104,11 @@ export default function GeneralForm({ userData, setUserData }: Props) {
             })}
 
             {/* add contact button */}
-            <li>
+            <li className="">
               <button
                 onClick={addContact}
                 type="button"
-                className="w-full flex rounded-md items-center justify-center text-lg gap-2 p-3 bg-slate-600 hover:opacity-80"
+                className="w-full flex rounded-md items-center justify-center gap-2 p-2 bg-slate-600 hover:opacity-80"
               >
                 Add Contact Link
                 <Icon icon={"mdi:plus-circle"} className="text-xl"></Icon>

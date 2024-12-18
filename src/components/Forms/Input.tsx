@@ -19,7 +19,7 @@ export default function Input({
   const inputID = v7();
 
   return (
-    <div className="text-lg flex flex-col gap-1">
+    <div className="text-inherit flex flex-col gap-1">
       <label htmlFor={inputID}>{label}</label>
       <input
         id={inputID}

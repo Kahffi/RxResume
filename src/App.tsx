@@ -1,26 +1,28 @@
 import useUserData from "./hooks/useUserData";
-import GeneralForm from "./components/GeneralForm";
+import GeneralForm from "./components/Forms/GeneralForm";
 import { Icon } from "@iconify/react";
+import Dropdown from "./components/Forms/DropDown";
 
 function App() {
   const { userData, setUserData } = useUserData();
 
   return (
-    <div className="flex flex-row bg-slate-800 min-h-svh max-h-svh">
+    <div className="flex bg-slate-800 min-h-svh max-h-svh">
       {/* sidebar */}
-      <header className="basis-96 bg-inherit max-h-screen overflow-auto">
+      <header className="basis-80 bg-inherit max-h-screen overflow-auto">
         <div>
           <img src="" alt="Logo" />
           <h1>MyCv</h1>
         </div>
         <aside className="text-white p-4">
-          <GeneralForm userData={userData} setUserData={setUserData} />
-          {/* <Dropdown
-            header="General Info"
+          {/* <GeneralForm userData={userData} setUserData={setUserData} /> */}
+          <Dropdown
+            header={<h1 className="font-medium text-xl">General Info</h1>}
             type="single"
             items={
+              <GeneralForm userData={userData} setUserData={setUserData} />
             }
-          /> */}
+          />
         </aside>
       </header>
       {/*  */}
@@ -53,7 +55,9 @@ function App() {
                       icon={`mdi:${ctc.platform.toLowerCase()}`}
                       color="black"
                     />
-                    <a href={ctc.link}>{ctc.link}</a>
+                    <a href={ctc.link} target="blank">
+                      {ctc.link}
+                    </a>
                   </li>
                 );
               })}

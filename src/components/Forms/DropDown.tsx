@@ -1,5 +1,5 @@
 import { ReactElement, ReactNode, useState } from "react";
-import double_arrow from "../assets/icons/double_arrow.svg";
+import double_arrow from "../../assets/icons/double_arrow.svg";
 
 type DropdownProps = {
   header: ReactNode;
@@ -11,13 +11,18 @@ export default function Dropdown({ items, header, type }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={`${isOpen ? "bg-slate-700" : ""} rounded-md`}>
-      <div className="w-full bg-slate-700 hover:opacity-80 text-lg  rounded-md shadow-md shadow-slate-900/30 cursor-pointer">
+    <div
+      className={`${
+        !isOpen ? "" : type === "single" ? "bg-slate-700/20" : "bg-slate-700"
+      } rounded-md`}
+    >
+      <div className="w-full bg-slate-700 hover:opacity-80 text-md  rounded-md shadow-md shadow-slate-900/30 cursor-pointer">
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           className="flex items-center justify-between w-full px-4 py-2"
         >
+          {/* The header could be element or a string for better flexibility */}
           {header}
           <span>
             <img
@@ -30,7 +35,7 @@ export default function Dropdown({ items, header, type }: DropdownProps) {
       </div>
       {/* dropdown content */}
       {isOpen && (
-        <div className="flex flex-col px-2 py-3 gap-1">
+        <div className="flex flex-col px-2 py-3 gap-1 w-full">
           {type === "single"
             ? items
             : (items as ReactElement<HTMLElement>[]).map((itm) => {
